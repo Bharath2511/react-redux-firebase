@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 const SignedInLinks = () => {
   return (
-    <ul className="ul right">
+    <ul className="right">
       <li>
-        <NavLink to="/">New Project</NavLink>
+        <NavLink to="/create">New Project</NavLink>
       </li>
       <li>
         <NavLink to="/">Log Out</NavLink>
