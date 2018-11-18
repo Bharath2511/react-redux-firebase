@@ -5,11 +5,13 @@ import { connect } from "react-redux";
 //we need to connect this as hoc to connect to db
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class Dashboard extends Component {
   render() {
     // console.log(this.props);
-    const { projects } = this.props;
+    const { projects, auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">
         <div className="row">
@@ -28,7 +30,8 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   //console.log(state);
   return {
-    projects: state.firestore.ordered.projects
+    projects: state.firestore.ordered.projects,
+    auth: state.firebase.auth
   };
 };
 
